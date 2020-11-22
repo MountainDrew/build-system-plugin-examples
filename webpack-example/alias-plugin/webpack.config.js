@@ -1,7 +1,7 @@
 const path = require('path');
 
 // when building your own change 'complete' to 'incomplete'
-const AliasPlugin = require('./plugins/alias.complete.js');
+const AliasPlugin = require('./plugin/alias.complete.js');
 
 module.exports = {
   mode: 'development',

@@ -1,7 +1,7 @@
 const path = require('path');
 
 // when building your own change 'complete' to 'incomplete'
-const BundleSizePlugin = require('./plugins/bundle-size.complete.js');
+const BundleSizePlugin = require('./plugin/bundle-size.complete.js');
 
 module.exports = {
   mode: 'development',
