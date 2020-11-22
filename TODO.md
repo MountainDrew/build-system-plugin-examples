@@ -1,0 +1,3 @@
+- Group plugins by type
+  - share input
+  - have both config files in route of group
