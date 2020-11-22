@@ -1,4 +1,4 @@
-// import { test } from 'input/files/index';
+import { test } from 'files/index';
 
 window.onload = () => {
   console.log(123);

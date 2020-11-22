@@ -28,16 +28,18 @@ module.exports = class AliasPlugin {
   }
 
   resolveFileFromAliases (dep, resolve, callback) {
-    if(!this.opts.aliases.some(alias => dep.request.startsWith(alias))) {
+    if(!Object.keys(this.opts.aliases).some(alias => dep.request.startsWith(alias))) {
       return resolve(dep, callback);
     }
 
-    const foundAlias = this.opts.aliases.find(alias => dep.request.startsWith(alias))
+    const [aliasKey, aliasValue] = Object.entries(this.opts.aliases).find(([key]) => dep.request.startsWith(key))
 
-    const removeRelativePoints = dep.request.replace('../', '').replace('./', '');
-    const restOfPath = removeRelativePoints.slice(foundAlias.length + 1, removeRelativePoints.length);
+    const restOfPath = dep.request.slice(
+      aliasKey.length + 1,
+      dep.request.length
+    );
 
-    dep.request = path.resolve(foundAlias, restOfPath);
+    dep.request = path.resolve(aliasValue, restOfPath);
 
     resolve(dep, callback);
   }
